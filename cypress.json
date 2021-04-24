@@ -1,0 +1,7 @@
+{
+  "component": {
+    "componentFolder": "components",
+    "testFiles": "**/*cy.{js,jsx,ts,tsx}",
+    "video": false
+  }
+}

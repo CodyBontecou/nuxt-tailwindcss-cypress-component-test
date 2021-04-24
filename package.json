@@ -6,13 +6,18 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "cypress:open": "cypress open-ct"
   },
   "dependencies": {
+    "@cypress/vue": "^2.2.1",
+    "@cypress/webpack-dev-server": "^1.1.4",
     "core-js": "^3.6.5",
+    "cypress": "^7.1.0",
     "nuxt": "^2.14.6"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^3.1.0"
+    "@nuxtjs/tailwindcss": "^3.1.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }
