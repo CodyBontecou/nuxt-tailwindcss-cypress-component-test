@@ -11,14 +11,7 @@ const nuxtDefaultTailwindConfig = require("@nuxtjs/tailwindcss/lib/files/tailwin
  */
 module.exports = (on, config) => {
   on("dev-server:start", async options => {
-    const webpackConfig = await getWebpackConfig("modern", {
-      for: "dev",
-      configOverides: {
-        tailwindcss: {
-          jit: false
-        }
-      }
-    });
+    const webpackConfig = await getWebpackConfig("modern", "dev");
 
     webpackConfig.module.rules
       // find the laoder for css
