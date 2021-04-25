@@ -1,4 +1,5 @@
 {
+  "fixturesFolder": false,
   "component": {
     "componentFolder": "components",
     "testFiles": "**/*cy.{js,jsx,ts,tsx}",
