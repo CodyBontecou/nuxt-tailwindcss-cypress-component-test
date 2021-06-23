@@ -4,31 +4,23 @@ const { getWebpackConfig } = require("nuxt");
 
 // resolve nuxt tailwind config
 const tailwindPostCSSplugin = require("tailwindcss");
-const nuxtDefaultTailwindConfig = require("@nuxtjs/tailwindcss/lib/files/tailwind.config");
 
 /**
  * @type Cypress.PluginConfig
  */
 module.exports = (on, config) => {
   on("dev-server:start", async options => {
-    const webpackConfig = await getWebpackConfig("modern", {
-      for: "dev",
-      configOverides: {
-        tailwindcss: {
-          jit: false
-        }
-      }
-    });
+    const webpackConfig = await getWebpackConfig("modern", "dev");
 
     webpackConfig.module.rules
-      // find the laoder for css
+      // find the loader for css
       .find(r => r.test.toString().includes("css"))
       // avoid touching anything with modules
       .oneOf.find(l => !l.resourceQuery)
       // find the postcss loader
-      .use.find(m => m.loader.includes("postcss"))
+      .use.find(m => m.loader.includes("postcss-loader"))
       // add the tailwind plugin
-      .options.plugins.push(tailwindPostCSSplugin(nuxtDefaultTailwindConfig));
+      .options.postcssOptions.plugins.push(tailwindPostCSSplugin());
 
     return startDevServer({
       options,
